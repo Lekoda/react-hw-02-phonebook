@@ -14,7 +14,7 @@ export class App extends Component {
     name: '',
     filter: '',
   };
-  onChangeFilter = e => {
+  onChange = e => {
     this.setState({ filter: e.currentTarget.value });
   };
   addContact = newContact => {
@@ -36,7 +36,7 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onAdd={this.addContact} />
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} onChange={this.onChangeFilter} />
+        <Filter filter={this.state.filter} onChange={this.onChange} />
         <ContactList
           contacts={this.state.contacts}
           onDelete={this.deleteContact}
