@@ -15,13 +15,31 @@ export class App extends Component {
     filter: '',
   };
   onChange = e => {
-    this.setState({ filter: e.currentTarget.value });
+    const { name, value } = e.currentTarget;
+    this.setState({ [name]: value });
   };
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   addContact = newContact => {
+    const { contacts } = this.state;
+    const isContactExist = contacts.find(
+      contact => contact.name === newContact.name
+    );
+
+    if (isContactExist) {
+      alert(`${newContact.name} is already exist`);
+    }
+
     this.setState(prevState => {
       return { contacts: [...prevState.contacts, newContact] };
     });
   };
+
   deleteContact = id => {
     this.setState(prevState => {
       return {
@@ -38,7 +56,7 @@ export class App extends Component {
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} onChange={this.onChange} />
         <ContactList
-          contacts={this.state.contacts}
+          contacts={this.getFilteredContacts()}
           onDelete={this.deleteContact}
         />
       </div>
