@@ -1,6 +1,13 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
+import {
+  StyledForm,
+  Label,
+  StyledFieled,
+  Button,
+  StyledError,
+} from './ContactForm.styled';
 
 const phoneRegistr =
   /^\+?\d{1,4}?[ .-]?(\(\d{1,3}\))?([ .-]?\d{1,4}){1,4}([ .-]?\d{1,9})?$/;
@@ -27,19 +34,19 @@ export const ContactForm = ({ onAdd }) => {
         action.resetForm();
       }}
     >
-      <Form>
-        <label>
+      <StyledForm>
+        <Label>
           Name
-          <Field type="text" name="name" />
-          <ErrorMessage name="name" />
-        </label>
-        <label>
+          <StyledFieled type="text" name="name" />
+          <StyledError name="name" component="div" />
+        </Label>
+        <Label>
           Number
-          <Field type="tel" name="number" />
-          <ErrorMessage name="number" />
-        </label>
-        <button type="submit">Submit</button>
-      </Form>
+          <StyledFieled type="tel" name="number" />
+          <StyledError name="number" component="div" />
+        </Label>
+        <Button type="submit">Submit</Button>
+      </StyledForm>
     </Formik>
   );
 };
