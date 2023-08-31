@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 export const ContactList = ({ contacts, onDelete }) => {
   return (
     <ul>
