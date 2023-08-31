@@ -10,7 +10,7 @@ export const ContactList = ({ contacts, onDelete }) => {
             {name} : {number}{' '}
           </p>
           <StyledDeleteBtn type="button" onClick={() => onDelete(id)}>
-            Delete Contact
+            Delete
           </StyledDeleteBtn>
         </StyledItem>
       ))}
